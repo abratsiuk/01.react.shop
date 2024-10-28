@@ -1,7 +1,13 @@
-function Cart() {
+import React from 'react';
+
+function Cart(props) {
+    const { quantity = 0 } = props;
     return (
-        <div>
-            <h1>Cart</h1>
+        <div className='cart  blue darken-4 white-text'>
+            <i className='material-icons'>shopping_cart</i>
+            {quantity ? (
+                <span className='cart-quantity'>{quantity}</span>
+            ) : null}
         </div>
     );
 }

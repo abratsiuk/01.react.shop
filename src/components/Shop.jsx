@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { API_URL, API_KEY } from '../config';
 import { Preloader } from './Preloader';
 import { GoodsList } from './GoodsList';
+import { Cart } from './Cart';
 
 function Shop() {
     const [goods, setGoods] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [order, setOrder] = useState([]);
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -30,6 +32,7 @@ function Shop() {
         return (
             <main className='container content'>
                 <GoodsList goods={goods} />
+                <Cart quantity={order.length} />
             </main>
         );
     }
