@@ -9,6 +9,31 @@ function Shop() {
     const [loading, setLoading] = useState(true);
     const [order, setOrder] = useState([]);
 
+    const addToBasket = (item) => {
+        const itemIndex = order.findIndex(
+            (orderItem) => orderItem.id === item.id
+        );
+        if (itemIndex < 0) {
+            const newItem = {
+                ...item,
+                quantity: 1,
+            };
+            setOrder([...order, newItem]);
+        } else {
+            const newOrder = order.map((orderItem, index) => {
+                if (index === itemIndex) {
+                    return {
+                        ...orderItem,
+                        quantity: orderItem.quantity + 1,
+                    };
+                } else {
+                    return orderItem;
+                }
+            });
+            setOrder(newOrder);
+        }
+    };
+
     useEffect(function getGoods() {
         fetch(API_URL, {
             headers: {
@@ -17,7 +42,20 @@ function Shop() {
         })
             .then((res) => res.json())
             .then((data) => {
-                data.shop && setGoods(data.shop);
+                data.shop &&
+                    setGoods(
+                        data.shop.map((item) => ({
+                            id: item.offerId,
+                            name: item.displayName,
+                            description: item.displayDescription,
+                            full_background:
+                                item.displayAssets &&
+                                item.displayAssets.length > 0
+                                    ? item.displayAssets[0].full_background
+                                    : null,
+                            price: item.price ? item.price.regularPrice : null,
+                        }))
+                    );
                 setLoading(false);
             })
             .catch((error) => {
@@ -31,7 +69,10 @@ function Shop() {
     } else {
         return (
             <main className='container content'>
-                <GoodsList goods={goods} />
+                <GoodsList
+                    goods={goods}
+                    addToBasket={addToBasket}
+                />
                 <Cart quantity={order.length} />
             </main>
         );

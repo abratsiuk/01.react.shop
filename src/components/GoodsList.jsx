@@ -2,18 +2,19 @@ import React from 'react';
 import { GoodItem } from './GoodItem';
 
 function GoodsList(props) {
-    const { goods = [] } = props;
+    const { goods = [], addToBasket = Function.prototype } = props;
 
     if (!goods.length) {
         return <h3>Nothing here</h3>;
     }
-
+    console.log(goods);
     return (
         <div className='goods'>
             {goods.map((good) => (
                 <GoodItem
-                    key={good.offerId}
+                    key={good.id}
                     {...good}
+                    addToBasket={addToBasket}
                 />
             ))}
         </div>

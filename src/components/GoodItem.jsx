@@ -1,16 +1,14 @@
 function GoodItem(props) {
     const {
-        offerId: id,
-        displayName: name,
-        displayDescription: description,
-        displayAssets: [{ full_background }],
-        price: { regularPrice: price },
+        id,
+        name,
+        description,
+        full_background,
+        price,
+        addToBasket = Function.prototype,
     } = props;
     return (
-        <div
-            className='card'
-            id={id}
-        >
+        <div className='card'>
             <div className='card-image'>
                 <img
                     src={full_background}
@@ -22,7 +20,20 @@ function GoodItem(props) {
                 <p>{description}</p>
             </div>
             <div className='card-action'>
-                <button className='btn'>Buy it Now</button>
+                <button
+                    className='btn'
+                    onClick={() =>
+                        addToBasket({
+                            id,
+                            name,
+                            description,
+                            full_background,
+                            price,
+                        })
+                    }
+                >
+                    Buy it Now
+                </button>
                 <span
                     className='right'
                     style={{ fontSize: '1.8rem' }}
