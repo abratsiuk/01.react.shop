@@ -32,7 +32,7 @@ function GoodItem(props) {
                         })
                     }
                 >
-                    Buy it Now
+                    Add to Cart
                 </button>
                 <span
                     className='right'

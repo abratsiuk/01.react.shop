@@ -9,4 +9,9 @@ export default [
     pluginJs.configs.recommended,
     pluginReact.configs.flat.recommended,
     pluginReactHooks.configs.recommended,
+    {
+        rules: {
+            'react/no-unknown-property': ['error', { ignore: ['class'] }],
+        },
+    },
 ];
