@@ -7,6 +7,7 @@ function Header() {
                 <a
                     href='https://github.com/abratsiuk/01.react.shop'
                     className='brand-logo brown-text text-darken-4'
+                    target='_blank'
                 >
                     React Shop
                 </a>
@@ -18,6 +19,7 @@ function Header() {
                         <a
                             href='https://github.com/abratsiuk/01.react.shop'
                             className='brown-text text-darken-4'
+                            target='_blank'
                         >
                             Repo
                         </a>
