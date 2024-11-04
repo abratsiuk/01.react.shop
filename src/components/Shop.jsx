@@ -36,7 +36,6 @@ function Shop() {
             });
             setOrder(newOrder);
         }
-        console.log('set alert');
         setAlertName(item.name);
     };
     const removeFromBasket = (id) => {

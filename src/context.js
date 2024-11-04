@@ -20,6 +20,15 @@ export const ContextProvider = ({ children }) => {
     value.removeFromBasket = (id) => {
         dispatch({ type: 'REMOVE_FROM_BASKET', payload: { id } });
     };
+    value.increaseQuantity = (id) => {
+        dispatch({ type: 'INCREASE_QUANTITY', payload: { id } });
+    };
+    value.decreaseQuantity = (id) => {
+        dispatch({ type: 'DECREASE_QUANTITY', payload: { id } });
+    };
+    value.handleBasketShow = () => {
+        dispatch({ type: 'HANDLE_BASKET_SHOW' });
+    };
     value.clearAlert = () => {
         dispatch({ type: 'CLEAR_ALERT' });
     };
