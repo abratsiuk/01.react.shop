@@ -14,8 +14,11 @@ const initialState = {
 export const ContextProvider = ({ children }) => {
     const [value, dispatch] = useReducer(reducer, initialState);
 
+    value.setGoods = (data) => {
+        dispatch({ type: 'SET_GOODS', payload: data });
+    };
     value.addToBasket = (item) => {
-        dispatch({ type: 'ADD_TO_BASKET', payload: { item } });
+        dispatch({ type: 'ADD_TO_BASKET', payload: item });
     };
     value.removeFromBasket = (id) => {
         dispatch({ type: 'REMOVE_FROM_BASKET', payload: { id } });
