@@ -35,7 +35,7 @@ function BasketList(props) {
                 <span className='secondary-content'>{total} &curren;</span>
             </li>
             <li className='collection-item'>
-                <button classNameName='btn btn-small'>Checkout</button>
+                <button className='btn btn-small'>Checkout</button>
             </li>
             <i
                 className='material-icons basket-close'

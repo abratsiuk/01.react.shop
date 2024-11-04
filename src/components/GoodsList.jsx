@@ -7,7 +7,6 @@ function GoodsList(props) {
     if (!goods.length) {
         return <h3>Nothing here</h3>;
     }
-    console.log(goods);
     return (
         <div className='goods'>
             {goods.map((good) => (
